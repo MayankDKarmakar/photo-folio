@@ -1,0 +1,26 @@
+.album-list {
+  width: 100%;
+
+  max-width: 1000px;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+.album-list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.album-grids {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  background-color: var(--ambient2);
+  padding: 20px 0;
+}
+.album-card {
+  background-color: antiquewhite;
+  width: 100%;
+  height: 150px;
+}

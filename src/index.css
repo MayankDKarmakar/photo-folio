@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+:root {
+  --bg1: #f3f2ec;
+  --txtLight: #fff;
+  --txtDark: #333;
+  --ambient1: #e62727;
+  --ambient2: #1e93ab;
+  --ambient3: #dcdcdc;
+  --dark1: #3b2621;
+  --ambient4: #48a6a7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--bg1);
+  font-family: Montserrat, "Ariel", "Sans-Seriff";
+}
+
+button {
+  cursor: pointer;
+}
