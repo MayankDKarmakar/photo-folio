@@ -2,12 +2,16 @@
 :root {
   --bg1: #f3f2ec;
   --txtLight: #fff;
+  --txtGray: #595959;
+  --bg2: #fff;
   --txtDark: #333;
   --ambient1: #e62727;
   --ambient2: #1e93ab;
   --ambient3: #dcdcdc;
   --dark1: #3b2621;
   --ambient4: #48a6a7;
+  --btnSuccess: #2e8b57;
+  --btnSuccessHover: #25794b;
 }
 
 * {
@@ -16,10 +20,37 @@
   box-sizing: border-box;
 }
 body {
-  background-color: var(--bg1);
+  /* background-color: var(--bg1); */
   font-family: Montserrat, "Ariel", "Sans-Seriff";
 }
 
-button {
+/* button {
   cursor: pointer;
+} */
+.addBtn {
+  cursor: pointer;
+  padding: 7px 14px;
+  border: none;
+  background-color: var(--btnSuccess);
+  color: var(--txtLight);
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+  /* font-size: 0.8rem; */
+  box-shadow: 0px 5px 20px -4px rgba(0, 0, 0, 0.6);
+}
+.addBtn:hover {
+  background-color: var(--btnSuccessHover);
+}
+
+@keyframes lineAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.lineAnimation {
+  animation: lineAnimation 2s ease-in 1s infinite;
 }
