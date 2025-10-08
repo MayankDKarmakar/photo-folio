@@ -4,6 +4,16 @@
   margin: 0 auto;
   text-align: center;
 }
+/* .album-form {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.album-form.show {
+  max-height: 145px;
+  opacity: 1;
+} */
 
 .album-list-head {
   display: flex;
@@ -14,7 +24,7 @@
 }
 
 .album-list-head h2 {
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .album-list-head h2::after {

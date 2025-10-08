@@ -12,6 +12,8 @@
   --ambient4: #48a6a7;
   --btnSuccess: #2e8b57;
   --btnSuccessHover: #25794b;
+  --btnCancel: #e62727;
+  --btnCancelHover: #c91f1f;
 }
 
 * {
@@ -27,7 +29,7 @@ body {
 /* button {
   cursor: pointer;
 } */
-.addBtn {
+.addButton {
   cursor: pointer;
   padding: 7px 14px;
   border: none;
@@ -38,8 +40,23 @@ body {
   /* font-size: 0.8rem; */
   box-shadow: 0px 5px 20px -4px rgba(0, 0, 0, 0.6);
 }
-.addBtn:hover {
+.addButton:hover {
   background-color: var(--btnSuccessHover);
+}
+.cancelButton {
+  cursor: pointer;
+  padding: 7px 14px;
+  border: none;
+  background-color: var(--btnCancel);
+  color: var(--txtLight);
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+  /* font-size: 0.8rem; */
+  box-shadow: 0px 5px 20px -4px rgba(0, 0, 0, 0.6);
+}
+
+.cancelButton:hover {
+  background-color: var(--btnCancelHover);
 }
 
 @keyframes lineAnimation {
@@ -52,5 +69,19 @@ body {
 }
 
 .lineAnimation {
-  animation: lineAnimation 2s ease-in 1s infinite;
+  animation: lineAnimation 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+.fadeIn {
+  animation: fadeIn 0.4s ease-in;
 }
