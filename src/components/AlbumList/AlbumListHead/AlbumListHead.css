@@ -1,0 +1,21 @@
+.album-list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: aqua; */
+  padding: 10px 0px;
+}
+
+.album-list-head h2 {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.album-list-head h2::after {
+  content: "";
+  background: var(--ambient1);
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  animation: lineAnimation 0.3s ease-in 0.1s;
+}
