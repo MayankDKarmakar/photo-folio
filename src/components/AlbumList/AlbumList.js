@@ -8,9 +8,10 @@ import { db } from "../../firebaseInit";
 import { toast } from "react-toastify";
 import { addDoc, collection } from "firebase/firestore";
 
-const AlbumList = ({ albums }) => {
+const AlbumList = ({ albums, setSelectedAlbum }) => {
   //------------------useStates-------------------------//
   const [albumForm, setAlbumForm] = useState(false);
+
   //-------------------adding document using addDoc---------------------//
   async function handleAddAlbum(albumName) {
     if (albums.includes(albumName)) {
@@ -34,7 +35,7 @@ const AlbumList = ({ albums }) => {
       {/* AlbumListHead is displaying the heading and add album button */}
       <AlbumListHead albumForm={albumForm} setAlbumForm={setAlbumForm} />
       {/* all the albums are fetched and displayed in card fromat in AlbumListGrid */}
-      <AlbumListGrid albums={albums} />
+      <AlbumListGrid albums={albums} setSelectedAlbum={setSelectedAlbum} />
     </div>
   );
 };

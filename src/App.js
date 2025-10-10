@@ -9,6 +9,7 @@ import { db } from "./firebaseInit";
 
 function App() {
   const [albums, setAlbums] = useState([]);
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
   //-----------------fetching Data from Firebase using snapShot method----------------------//
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "albums"), (querysnapShot) => {
@@ -18,31 +19,24 @@ function App() {
           ...doc.data(),
         };
       });
-      console.log(albums);
       setAlbums(albums);
     });
 
     return () => unsub();
   }, []);
 
-  // async function handleAddAlbum(albumName) {
-  //   if (albums.includes(albumName)) {
-  //     toast.error("Album name already exist");
-  //     return;
-  //   }
-  //   try {
-  //     await addDoc(collection(db, "albums"), { name: albumName });
-  //     toast.success("Album added successfully");
-  //   } catch (error) {
-  //     toast.error("Failed to add album");
-  //   }
-  // }
-
   return (
     <div className="App">
       <Header />
-      <AlbumList albums={albums} />
-      <ImageList />
+      {selectedAlbum ? (
+        <ImageList
+          selectedAlbum={selectedAlbum}
+          setSelectedAlbum={setSelectedAlbum}
+        />
+      ) : (
+        <AlbumList albums={albums} setSelectedAlbum={setSelectedAlbum} />
+      )}
+
       <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );

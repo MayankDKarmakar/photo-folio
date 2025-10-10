@@ -2,11 +2,15 @@ import React from "react";
 import "./AlbumListGrid.css";
 import { BiPhotoAlbum } from "react-icons/bi";
 
-const AlbumListGrid = ({ albums }) => {
+const AlbumListGrid = ({ albums, setSelectedAlbum }) => {
   return (
     <div className="album-grids">
       {albums.map((album, i) => (
-        <div className="album-card" key={i}>
+        <div
+          onClick={() => setSelectedAlbum(album)}
+          className="album-card"
+          key={i}
+        >
           <div className="album-icon-container">
             <BiPhotoAlbum className="album-icon" />
           </div>

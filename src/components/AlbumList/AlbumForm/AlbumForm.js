@@ -20,16 +20,18 @@ const AlbumForm = ({ albumForm, handleAddAlbum }) => {
           required
         />
 
-        <button
-          type="button"
-          className=" cancelButton"
-          onClick={() => setAlbumName("")}
-        >
-          Clear
-        </button>
-        <button type="submit" className=" addButton">
-          Create
-        </button>
+        <div className="btn-container">
+          <button
+            type="button"
+            className=" cancelButton"
+            onClick={() => setAlbumName("")}
+          >
+            Clear
+          </button>
+          <button type="submit" className=" addButton">
+            Create
+          </button>
+        </div>
       </form>
     </div>
   );
