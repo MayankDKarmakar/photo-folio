@@ -8,7 +8,10 @@ const ImageListHead = ({
   setSelectedAlbum,
   imageForm,
   setImageForm,
+  setimageIsUpdating,
+  clearInputs,
 }) => {
+  // console.log("Image ");
   return (
     <div className="image-list-head">
       <div className="image-list-head-title">
@@ -25,7 +28,11 @@ const ImageListHead = ({
         </form>
         <button
           className={`${imageForm ? "cancelButton" : "addButton"}`}
-          onClick={() => setImageForm(!imageForm)}
+          onClick={() => {
+            setImageForm(!imageForm);
+            setimageIsUpdating(false);
+            clearInputs();
+          }}
         >
           {imageForm ? "Cancel" : "Add Image"}
         </button>

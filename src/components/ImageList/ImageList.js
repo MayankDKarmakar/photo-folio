@@ -3,13 +3,23 @@ import "./ImageList.css";
 import ImageListHead from "./ImageListHead/ImageListHead";
 import ImageListGrid from "./ImageListGrid/ImageListGrid";
 import ImageForm from "./ImageForm/ImageForm";
-import { collection, onSnapshot, addDoc } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  addDoc,
+  setDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../../firebaseInit";
 import { toast } from "react-toastify";
 
 const ImageList = ({ selectedAlbum, setSelectedAlbum }) => {
   const [imageLists, setImageLists] = useState([]);
   const [imageForm, setImageForm] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageIsUpdating, setimageIsUpdating] = useState(false);
+  const [imageTitleFromInput, setImageTitleFromInput] = useState("");
+  const [imageUrlFromInput, setImageUrlFromInput] = useState("");
 
   useEffect(() => {
     const unsub = onSnapshot(
@@ -27,7 +37,7 @@ const ImageList = ({ selectedAlbum, setSelectedAlbum }) => {
     );
 
     return () => unsub();
-  });
+  }, [selectedAlbum]);
 
   async function handleAddImage(image) {
     // console.log("Image recieved in image list: ", image);
@@ -47,12 +57,45 @@ const ImageList = ({ selectedAlbum, setSelectedAlbum }) => {
     }
   }
 
+  async function handleUpdateImage(updatedImage) {
+    try {
+      await setDoc(
+        doc(
+          db,
+          "albums",
+          `${selectedAlbum.id}`,
+          `${selectedAlbum.name}`,
+          `${updatedImage.id}`
+        ),
+        updatedImage
+      );
+      toast.success("Image updated successfully");
+    } catch (err) {
+      toast.error("Failed to update image");
+    }
+  }
+
+  function clearInputs() {
+    setImageTitleFromInput("");
+    setImageUrlFromInput("");
+  }
+
   return (
     <div className="image-list">
       <ImageForm
         imageForm={imageForm}
         selectedAlbum={selectedAlbum}
         handleAddImage={handleAddImage}
+        selectedImage={selectedImage}
+        setImageForm={setImageForm}
+        handleUpdateImage={handleUpdateImage}
+        imageIsUpdating={imageIsUpdating}
+        setimageIsUpdating={setimageIsUpdating}
+        imageTitleFromInput={imageTitleFromInput}
+        setImageTitleFromInput={setImageTitleFromInput}
+        imageUrlFromInput={imageUrlFromInput}
+        setImageUrlFromInput={setImageUrlFromInput}
+        clearInputs={clearInputs}
       />
       {/* Image List Head container */}
       <ImageListHead
@@ -60,8 +103,14 @@ const ImageList = ({ selectedAlbum, setSelectedAlbum }) => {
         setSelectedAlbum={setSelectedAlbum}
         setImageForm={setImageForm}
         imageForm={imageForm}
+        setimageIsUpdating={setimageIsUpdating}
+        clearInputs={clearInputs}
       />
-      <ImageListGrid imageLists={imageLists} />
+      <ImageListGrid
+        imageLists={imageLists}
+        selectedAlbum={selectedAlbum}
+        setSelectedImage={setSelectedImage}
+      />
     </div>
   );
 };
