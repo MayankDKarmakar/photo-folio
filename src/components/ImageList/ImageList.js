@@ -3,6 +3,7 @@ import "./ImageList.css";
 import ImageListHead from "./ImageListHead/ImageListHead";
 import ImageListGrid from "./ImageListGrid/ImageListGrid";
 import ImageForm from "./ImageForm/ImageForm";
+import ImageCarousel from "./ImageCarousel/ImageCarousel";
 import {
   collection,
   onSnapshot,
@@ -20,6 +21,7 @@ const ImageList = ({ selectedAlbum, setSelectedAlbum }) => {
   const [imageIsUpdating, setimageIsUpdating] = useState(false);
   const [imageTitleFromInput, setImageTitleFromInput] = useState("");
   const [imageUrlFromInput, setImageUrlFromInput] = useState("");
+  const [selectedImgForCarousel, setSelectedImgForCarousel] = useState(null);
 
   useEffect(() => {
     const unsub = onSnapshot(
@@ -81,7 +83,11 @@ const ImageList = ({ selectedAlbum, setSelectedAlbum }) => {
   }
 
   return (
-    <div className="image-list">
+    <div
+      className={`image-list ${
+        selectedAlbum ? "fadeInCarousel" : "fadeOutCarousel"
+      }`}
+    >
       <ImageForm
         imageForm={imageForm}
         selectedAlbum={selectedAlbum}
@@ -110,7 +116,15 @@ const ImageList = ({ selectedAlbum, setSelectedAlbum }) => {
         imageLists={imageLists}
         selectedAlbum={selectedAlbum}
         setSelectedImage={setSelectedImage}
+        setSelectedImgForCarousel={setSelectedImgForCarousel}
       />
+      {selectedImgForCarousel && (
+        <ImageCarousel
+          imageLists={imageLists}
+          selectedImgForCarousel={selectedImgForCarousel}
+          setSelectedImgForCarousel={setSelectedImgForCarousel}
+        />
+      )}
     </div>
   );
 };

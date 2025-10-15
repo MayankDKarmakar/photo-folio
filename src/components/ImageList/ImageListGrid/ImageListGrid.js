@@ -4,7 +4,12 @@ import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebaseInit";
-const ImageListGrid = ({ imageLists, setSelectedImage, selectedAlbum }) => {
+const ImageListGrid = ({
+  imageLists,
+  setSelectedImage,
+  selectedAlbum,
+  setSelectedImgForCarousel,
+}) => {
   async function deleteImage(image) {
     await deleteDoc(
       doc(
@@ -21,7 +26,11 @@ const ImageListGrid = ({ imageLists, setSelectedImage, selectedAlbum }) => {
     <div className="image-grids">
       {/* Iterating over imageLists to render image cards */}
       {imageLists.map((image, i) => (
-        <div className="image-card" key={i}>
+        <div
+          className="image-card"
+          onClick={() => setSelectedImgForCarousel(image)}
+          key={i}
+        >
           <div className="controlBtns">
             <MdEdit
               className="edit-image-btn"

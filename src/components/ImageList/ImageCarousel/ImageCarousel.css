@@ -1,0 +1,75 @@
+.image-carousel-overlay {
+  position: fixed; /* better than absolute for fullscreen overlays */
+  inset: 0; /* shorthand for top:0, left:0, right:0, bottom:0 */
+  background: rgba(0, 0, 0, 0.555);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-container {
+  position: relative;
+  width: 70vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* overflow: hidden; */
+  /* background-color: antiquewhite; */
+}
+.closeIcon {
+  position: absolute;
+  top: -30px;
+  right: -40px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  background-color: var(--bg1);
+  border-radius: 50%;
+  color: black;
+  transition: all 0.2s ease-in-out;
+}
+.closeIcon:hover {
+  color: var(--bg1);
+  background-color: var(--btnCancel);
+}
+
+.backIcon {
+  position: absolute;
+  left: -40px;
+  font-size: 3rem;
+  color: var(--bg1);
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.backIcon:hover {
+  color: var(--ambient2);
+}
+
+.forwardIcon {
+  position: absolute;
+  right: -40px;
+  font-size: 3rem;
+  color: var(--bg1);
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.forwardIcon:hover {
+  color: var(--ambient2);
+}
+
+.image_container {
+  width: 100%;
+  height: 100%;
+  /* background-color: aqua; */
+}
+.image_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+
+  overflow: hidden;
+}
